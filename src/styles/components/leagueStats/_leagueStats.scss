@@ -1,0 +1,41 @@
+.league-stats__wrapper {
+    background-color: #cec6c7;
+    height: 500px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+}
+
+.league-stats__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 110px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.league-stats__header-title {
+    color: black;
+}
+
+.league-stats__header-controls {
+    display: flex;
+
+    & input {
+        background-color: transparent;
+        border: 2px solid black;
+        border-radius: 2px;
+        color: black;
+        height: 30px;
+    }
+}
+
+@media (max-width: 425px) {
+    .league-stats__wrapper {
+        height: 100%;
+        width: 90%;
+    }
+}
