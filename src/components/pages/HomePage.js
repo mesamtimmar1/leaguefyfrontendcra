@@ -12,7 +12,6 @@ const HomePage = props => {
             </div>
     
             <div className="home-page__body">
-            {console.log("HEREEEEEE")}
                 <LeagueStats />
             </div>
         </div>
