@@ -7,6 +7,7 @@ export default class LeagueStats extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            searching: false,
             searched: false,
             summonerName: '',
             matches: []
@@ -28,25 +29,28 @@ export default class LeagueStats extends React.Component {
     handleSearch = () => {
         if (!this.state.summonerName)
             return;
-        
-        fetch(`${config.BASE_URL}lol/summoner/stats/${this.state.summonerName}`)
-            .then(res => res.json())
-            .then(matches => this.setState(prevState => {
-                return({
-                    ...prevState,
-                    matches,
-                    searched: true
-                })})
-            )
-            .catch(err => {
-                this.setState(prevState => {
+        this.setState({searching:true, searched:false}, () =>
+            fetch(`${config.BASE_URL}lol/summoner/stats/${this.state.summonerName}`)
+                .then(res => res.json())
+                .then(matches => this.setState(prevState => {
                     return({
                         ...prevState,
-                        matches: [],
-                        searched: false
-                    })
-                })}
-            );
+                        matches,
+                        searching: false,
+                        searched: true,
+                    })})
+                )
+                .catch(err => {
+                    this.setState(prevState => {
+                        return({
+                            ...prevState,
+                            matches: [],
+                            searching: false,
+                            searched: false
+                        })
+                    })}
+                )
+        );
     }
 
     render() {
@@ -75,6 +79,12 @@ export default class LeagueStats extends React.Component {
                 </div>
         
                 <div className="league-stats__body">
+                    {this.state.searching &&
+                        <strong>Searching...</strong>
+                    }
+                    {this.state.searched && this.state.matches.length == 0 &&
+                        <strong>Summoner not found...</strong>
+                    }
                     {this.state.searched &&
                         this.state.matches.map(matchResult => {
                             return(
