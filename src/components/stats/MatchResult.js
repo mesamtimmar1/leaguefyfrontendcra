@@ -26,8 +26,8 @@ const MatchResult = props => {
             </div>
 
             <div className="match-result__creep-score">
-                <p>TCS:{props.matchResult.totalCreepScore}</p>
-                <p>TCS/min:{props.matchResult.creepScorePerMinute.toFixed(2) || 0}</p>
+                <p>TCS:{props.matchResult.totalCreepScore || 0}</p>
+                <p>TCS/min:{props.matchResult.creepScorePerMinute ? props.matchResult.creepScorePerMinute.toFixed(2) : 0}</p>
             </div>
         </div>
     )
