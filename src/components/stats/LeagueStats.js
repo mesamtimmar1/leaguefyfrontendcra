@@ -1,6 +1,7 @@
 import React from 'react';
 import MatchResult from './MatchResult';
 import config from '../../config';
+import helper from './helper';
 
 export default class LeagueStats extends React.Component {
     constructor(props){
@@ -16,6 +17,9 @@ export default class LeagueStats extends React.Component {
         const target = event.target;
         const value = target.value;
         const fieldName = target.name;
+
+        if (fieldName === 'summonerName' && !helper.validateSummonerName(value) && value != '')
+            return;
         this.setState({
             [fieldName]: value
         });

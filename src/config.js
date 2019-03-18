@@ -1,10 +1,10 @@
 const getBaseUrl = () => {
     const env = process.env.NODE_ENV;
     switch (env) {
-        case 'local':
+        case 'development':
             return 'http://localhost:3000/api/'
         default:
-            return 'http://localhost:3000/api/';
+            return 'https://leaguefybackend.herokuapp.com/api/';
     }
 }
 
