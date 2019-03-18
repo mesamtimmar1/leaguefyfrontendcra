@@ -1,7 +1,7 @@
 .league-stats__wrapper {
     background-color: #cec6c7;
     height: 500px;
-    width: 600px;
+    width: 900px;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid black;
@@ -31,6 +31,11 @@
         color: black;
         height: 30px;
     }
+}
+
+.league-stats__body {
+    display: flex;
+    flex-direction: column;
 }
 
 @media (max-width: 425px) {

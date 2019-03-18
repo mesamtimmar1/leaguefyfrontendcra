@@ -5,24 +5,29 @@ const MatchResult = props => {
         <div className="match-result__wrapper">
             <div className="match-result__general">
                 <p><strong>{props.matchResult.outcome}</strong></p>
-                <p>{props.matchResult.gameDuration}</p>
+                <p>Time: {props.matchResult.gameDuration}</p>
             </div>
 
             <div className="match-result__champion">
-                <p>{props.matchResult.championName}</p>
-                <p>{props.matchResult.championLevel}</p>
+                <p>CN: {props.matchResult.championName}</p>
+                <p>CL:{props.matchResult.championLevel}</p>
             </div>
 
             <div className="match-result__kda">
-                <p>{props.matchResult.kills}</p>
+                <p>K/D/A:{props.matchResult.kills}/{props.matchResult.deaths}/{props.matchResult.assists}</p>
             </div>
 
             <div className="match-result__items-bought">
-                <p>{props.matchResult.itemsBought}</p>
+                <p>Items Bought: </p>
+                {props.matchResult.itemsBought.map(item =>
+                        <p>{item}</p>  
+                    )
+                }
             </div>
 
             <div className="match-result__creep-score">
-                <p>{props.matchResult.creepScorePerMinute}</p>
+                <p>TCS:{props.matchResult.totalCreepScore}</p>
+                <p>TCS/min:{props.matchResult.creepScorePerMinute.toFixed(2) || 0}</p>
             </div>
         </div>
     )
