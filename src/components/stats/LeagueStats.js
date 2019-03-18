@@ -37,6 +37,15 @@ export default class LeagueStats extends React.Component {
                     matches,
                     searched: true
                 })})
+            )
+            .catch(err => {
+                this.setState(prevState => {
+                    return({
+                        ...prevState,
+                        matches: [],
+                        searched: false
+                    })
+                })}
             );
     }
 
